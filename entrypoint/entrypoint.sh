@@ -137,7 +137,13 @@ update_drupal_site_settings() {
 
 update_drupal_admin_user_password() {
     cd $DRUPAL_ROOT
-    drush sqlq "update users set name='$DRUPAL_ADMIN_USER', mail='$DRUPAL_ADMIN_EMAIL', pass=md5('$DRUPAL_ADMIN_PASSWORD') where uid=1;"
+    drush sqlq "update users set name='$DRUPAL_ADMIN_USER', mail='$DRUPAL_ADMIN_EMAIL' where uid=1;"
+    drush user-password 1 --password=$DRUPAL_ADMIN_PASSWORD
+}
+
+update_drupal_settings() {
+    cd $DRUPAL_ROOT
+    drush variable-set --yes islandora_base_url "http://$FEDORA_PORT_8080_TCP_ADDR:$FEDORA_PORT_8080_TCP_PORT"
 }
 
 update_drupal_site() {
@@ -176,6 +182,7 @@ main() {
     setup_drupal_database_user
     update_drupal_site_settings
     update_drupal_admin_user_password
+    update_drupal_settings
     update_drupal_site
     display_access_information
     exec "$@"
