@@ -188,6 +188,6 @@ main() {
     display_access_information
     # For development only
     unison -socket 5000&
-    exec "$@"
+    /entrypoint/drupal/entrypoint.sh "$@"
 }
 main "$@"
