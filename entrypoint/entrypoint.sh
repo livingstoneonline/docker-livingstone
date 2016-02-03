@@ -144,6 +144,7 @@ update_drupal_admin_user_password() {
 update_drupal_settings() {
     cd $DRUPAL_ROOT
     drush variable-set --yes islandora_base_url "http://$FEDORA_PORT_8080_TCP_ADDR:$FEDORA_PORT_8080_TCP_PORT/fedora"
+    drush variable-set --yes islandora_solr_url "http://$FEDORA_PORT_8080_TCP_ADDR:$FEDORA_PORT_8080_TCP_PORT/solr"
 }
 
 update_drupal_site() {
