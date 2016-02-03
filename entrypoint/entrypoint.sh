@@ -185,6 +185,8 @@ main() {
     update_drupal_settings
     update_drupal_site
     display_access_information
+    # For development only
+    unison -socket 5000&
     exec "$@"
 }
 main "$@"

@@ -18,7 +18,8 @@ ENTRYPOINT ["/entrypoint/livingstone/entrypoint.sh"]
 CMD ["/usr/sbin/apachectl", "-DFOREGROUND"]
 
 # Install Union for development, it should not be in stage/prod images.
-RUN curl -L http://unison-binaries.inria.fr/files/2011.01.28-Esup-unison-2.40.61-linux-x86_64-text-static.tar.gz | \
-    tar -xzf - -C /usr/local/bin && \
-    mv /usr/local/bin/unison-2.40.61-linux-x86_64-text-static /usr/local/bin/unison
+COPY glibc-2.21-r2.apk /tmp/glibc-2.21-r2.apk
+RUN apk --update add curl ca-certificates tar && \
+    apk add --allow-untrusted /tmp/glibc-2.21-r2.apk
+COPY unison /usr/local/bin/unison
 EXPOSE 5000
