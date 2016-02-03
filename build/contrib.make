@@ -1,6 +1,19 @@
 # -*- mode: yaml -*-
 # vi: set ft=yaml :
 libraries:
+  ckeditor:
+    download:
+      type: file
+      url: "http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.5.6/ckeditor_4.5.6_standard.zip"
+  iframedialog:
+    subdir: ckeditor/plugins
+    download:
+      type: file
+      url: "http://download.ckeditor.com/iframedialog/releases/iframedialog_4.5.6.zip"
+  plupload:
+    download:
+      type: file
+      url: "https://github.com/moxiecode/plupload/archive/v1.5.8.zip"
   PHPExcel:
     download:
       type: file
