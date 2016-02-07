@@ -160,7 +160,7 @@ projects:
     subdir: contrib
     download:
       type: file
-      url: https://github.com/tombola/nodequeue_pager/archive/7.x-1.x.tar.gz
+      url: https://github.com/livingstoneonline/nodequeue_pager/archive/7.x-1.x.tar.gz
   panels:
     type: module
     subdir: contrib
