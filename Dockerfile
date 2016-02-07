@@ -1,7 +1,7 @@
 FROM livingstoneonline/islandora
 MAINTAINER Nigel Banks <nigel.g.banks@gmail.com>
 
-RUN curl -L https://github.com/livingstoneonline/docker-livingstone/blob/dev/files.tgz?raw=true | \
+RUN curl -L https://s3.eu-central-1.amazonaws.com/livingstoneonline/deployment/drupal-files.tgz | \
     tar -xzf - -C ${DRUPAL_ROOT}/sites/default
 
 COPY build /build
