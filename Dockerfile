@@ -1,7 +1,8 @@
 FROM livingstoneonline/islandora
 MAINTAINER Nigel Banks <nigel.g.banks@gmail.com>
 
-ADD files.tar.bz2 ${DRUPAL_ROOT}/sites/default
+RUN curl -L https://github.com/livingstoneonline/docker-livingstone/blob/dev/files.tgz?raw=true | \
+    tar -xzf - -C ${DRUPAL_ROOT}/sites/default
 
 COPY build /build
 RUN cd ${DRUPAL_ROOT} && drush make -y --no-core --no-cache /build/site.make && \
