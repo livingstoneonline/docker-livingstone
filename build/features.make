@@ -8,3 +8,4 @@ projects:
       type: git
       url: https://github.com/livingstoneonline/livingstone_online_features.git
       branch: dev
+      working-copy: true

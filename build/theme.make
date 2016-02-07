@@ -10,3 +10,4 @@ projects:
       type: git
       url: http://github.com/livingstoneonline/livingstone_online_theme.git
       branch: dev
+      working-copy: true
