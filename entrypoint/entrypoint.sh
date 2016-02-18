@@ -152,6 +152,7 @@ update_drupal_site() {
     drush cc all
     drush -y updb
     drush cc all
+    drush -y en features
     drush features-revert-all -y
     drush cc all
 }

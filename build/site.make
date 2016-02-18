@@ -6,5 +6,4 @@ includes:
   - contrib.make
   - islandora.make
   - theme.make
-  - features.make
   - dev.make

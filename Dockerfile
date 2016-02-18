@@ -13,6 +13,9 @@ RUN cd ${DRUPAL_ROOT} && drush make -y --no-core --no-cache /build/site.make && 
            /tmp/* && \
     echo '' > /root/.ash_history
 
+RUN rm -fr ${DRUPAL_ROOT}/sites/all/modules/features && \ 
+    git clone https://github.com/livingstoneonline/livingstone_online_features.git ${DRUPAL_ROOT}/sites/all/modules/features
+
 VOLUME ${DRUPAL_ROOT}/sites/default/files
 
 ADD entrypoint /entrypoint/livingstone
