@@ -6,6 +6,7 @@ RUN curl -L https://s3.eu-central-1.amazonaws.com/livingstoneonline/deployment/d
 
 COPY build /build
 RUN cd ${DRUPAL_ROOT} && drush make -y --no-core --no-cache /build/site.make && \
+    chown -R apache:apache ${DRUPAL_ROOT} && \
     rm -fr /var/cache/apk/* \
            /root/.drush/cache/* \
            /root/.cache/* \
