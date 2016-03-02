@@ -181,6 +181,10 @@ projects:
     type: module
     subdir: contrib
     version: "2.3"
+  redirect:
+    type: module
+    subdir: contrib
+    version: "1.0-rc3"    
   sharethis:
     type: module
     subdir: contrib
