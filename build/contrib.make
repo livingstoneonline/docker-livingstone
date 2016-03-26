@@ -181,6 +181,10 @@ projects:
     type: module
     subdir: contrib
     version: "2.3"
+  qtip:
+    type: module
+    subdir: contrib
+    version: "2.0-rc3"  
   redirect:
     type: module
     subdir: contrib
