@@ -139,6 +139,14 @@ projects:
     type: module
     subdir: contrib
     version: "1.5"
+  menu_block:
+    type: module
+    subdir: contrib
+    version: "2.7"    
+  menu_attributes:
+    type: module
+    subdir: contrib
+    version: "1.0+1-dev"    
   module_filter:
     type: module
     subdir: contrib
