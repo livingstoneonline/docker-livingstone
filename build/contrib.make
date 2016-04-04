@@ -146,7 +146,7 @@ projects:
   menu_attributes:
     type: module
     subdir: contrib
-    version: "1.0+1-dev"
+    version: "1.x-dev"
   menu_block:
     type: module
     subdir: contrib
