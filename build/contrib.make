@@ -147,6 +147,10 @@ projects:
     type: module
     subdir: contrib
     version: "1.0+1-dev"
+  metatag:
+    type: module
+    subdir: contrib
+    version: "1.6"       
   mobile_navigation:
     type: module
     subdir: contrib
