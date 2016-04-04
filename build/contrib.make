@@ -146,7 +146,15 @@ projects:
   menu_attributes:
     type: module
     subdir: contrib
-    version: "1.x-dev"
+    version: "1.0+1-dev"
+  menu_block:
+    type: module
+    subdir: contrib
+    version: "2.7"  
+  metatag:
+    type: module
+    subdir: contrib
+    version: "1.6"           
   mobile_navigation:
     type: module
     subdir: contrib
