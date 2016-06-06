@@ -261,3 +261,7 @@ projects:
     type: module
     subdir: contrib
     version: "1.1"
+  flexslider:
+    type: module
+    subdir: contrib
+    version: "7.x-2.0-alpha3"
