@@ -264,4 +264,4 @@ projects:
   flexslider:
     type: module
     subdir: contrib
-    version: "7.x-2.0-alpha3"
+    version: "7.x-2.0-rc1"
