@@ -5,4 +5,5 @@ core: 7.x
 includes:
   - contrib.make
   - islandora.make
+  - custom.make
   - theme.make
