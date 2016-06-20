@@ -269,3 +269,11 @@ projects:
     type: module
     subdir: contrib
     version: "4.0-alpha3"
+  date:
+    type: module
+    subdir: contrib
+    version: "2.9"
+  simple_timeline:
+    type: module
+    subdir: contrib
+    version: "1.0"
