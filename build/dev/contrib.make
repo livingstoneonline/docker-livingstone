@@ -265,3 +265,7 @@ projects:
     type: module
     subdir: contrib
     version: "2.0-rc1"
+  jquerymenu:
+    type: module
+    subdir: contrib
+    version: "4.0-alpha3"
