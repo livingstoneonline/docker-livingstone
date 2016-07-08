@@ -277,3 +277,7 @@ projects:
     type: module
     subdir: contrib
     version: "1.0"
+  filedepot:
+    type: module
+    subdir: contrib
+    version: "1.3"
