@@ -9,7 +9,7 @@ libraries:
     subdir: ckeditor/plugins
     download:
       type: file
-      url: "http://download.ckeditor.com/iframedialog/releases/iframedialog_4.5.6.zip"
+      url: "http://download.ckeditor.com/iframedialog/releases/iframedialog_4.5.10.zip"
   plupload:
     download:
       type: file
