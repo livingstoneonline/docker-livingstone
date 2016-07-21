@@ -4,7 +4,7 @@ libraries:
   ckeditor:
     download:
       type: file
-      url: "http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.5.6/ckeditor_4.5.6_standard.zip"
+      url: "http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.5.10/ckeditor_4.5.10_full.zip"
   iframedialog:
     subdir: ckeditor/plugins
     download:
