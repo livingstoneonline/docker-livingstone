@@ -46,11 +46,11 @@ projects:
   ckeditor:
     type: module
     subdir: contrib
-    version: "1.16"
+    version: "1.17"
   colorbox:
     type: module
     subdir: contrib
-    version: "2.10"
+    version: "2.12"
   ctools:
     type: module
     subdir: contrib
@@ -66,7 +66,7 @@ projects:
   entity:
     type: module
     subdir: contrib
-    version: "1.6"
+    version: "1.7"
   entitycache:
     type: module
     subdir: contrib
@@ -78,7 +78,7 @@ projects:
   features:
     type: module
     subdir: contrib
-    version: "2.7"
+    version: "2.10"
   features_diff:
     type: module
     subdir: contrib
@@ -90,7 +90,7 @@ projects:
   feeds:
     type: module
     subdir: contrib
-    version: "2.0-beta1"
+    version: "2.0-beta2"
   feeds_xls:
     type: module
     subdir: contrib
@@ -98,7 +98,7 @@ projects:
   field_group:
     type: module
     subdir: contrib
-    version: "1.4"
+    version: "1.5"
   filefield_sources:
     type: module
     subdir: contrib
@@ -114,7 +114,7 @@ projects:
   google_analytics:
     type: module
     subdir: contrib
-    version: "2.1"
+    version: "2.2"
   imagemagick:
     type: module
     subdir: contrib
@@ -134,7 +134,7 @@ projects:
   libraries:
     type: module
     subdir: contrib
-    version: "2.2"
+    version: "2.3"
   media:
     type: module
     subdir: contrib
@@ -142,7 +142,7 @@ projects:
   menu_block:
     type: module
     subdir: contrib
-    version: "2.7"    
+    version: "2.7"
   menu_attributes:
     type: module
     subdir: contrib
@@ -150,15 +150,15 @@ projects:
   menu_block:
     type: module
     subdir: contrib
-    version: "2.7"  
+    version: "2.7"
   metatag:
     type: module
     subdir: contrib
-    version: "1.6"           
+    version: "1.17"
   mobile_navigation:
     type: module
     subdir: contrib
-    version: "1.2"     
+    version: "1.2"
   module_filter:
     type: module
     subdir: contrib
@@ -174,7 +174,7 @@ projects:
   nodequeue:
     type: module
     subdir: contrib
-    version: "2.0"
+    version: "2.1"
   nodequeue_pager:
     type: module
     subdir: contrib
@@ -192,7 +192,7 @@ projects:
   plupload:
     type: module
     subdir: contrib
-    version: "1.1"
+    version: "1.7"
   print:
     type: module
     subdir: contrib
@@ -200,19 +200,19 @@ projects:
   private_files_download_permission:
     type: module
     subdir: contrib
-    version: "2.3"
+    version: "2.5"
   qtip:
     type: module
     subdir: contrib
-    version: "2.0-rc3"  
+    version: "2.0-rc4"
   redirect:
     type: module
     subdir: contrib
-    version: "1.0-rc3"    
+    version: "1.0-rc3"
   sharethis:
     type: module
     subdir: contrib
-    version: "2.12"
+    version: "2.13"
   stage_file_proxy:
     type: module
     subdir: contrib
@@ -240,7 +240,7 @@ projects:
   views:
     type: module
     subdir: contrib
-    version: "3.13"
+    version: "3.14"
   views_bulk_operations:
     type: module
     subdir: contrib
