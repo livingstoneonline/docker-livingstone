@@ -6,6 +6,7 @@ LABEL "License"="GPLv3" \
 
 COPY build/prod /build
 RUN cd ${DRUPAL_ROOT} && drush make -y --no-core --no-cache /build/site.make && \
+    rm -fr ${DRUPAL_ROOT}/sites/all/libraries/plupload/examples && \
     rm -fr ${DRUPAL_ROOT}/sites/all/modules/features && \
     git clone https://github.com/livingstoneonline/livingstone_online_features.git ${DRUPAL_ROOT}/sites/all/modules/features && \
     cd ${DRUPAL_ROOT}/sites/all/modules/features && \
