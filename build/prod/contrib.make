@@ -297,3 +297,7 @@ projects:
     type: module
     subdir: contrib
     version: "1.3"
+  themekey:
+    type: module
+    subdir: contrib
+    version: 3.4
