@@ -22,6 +22,22 @@ libraries:
     download:
       type: file
       url: "https://github.com/harvesthq/chosen/releases/download/1.4.2/chosen_v1.4.2.zip"
+  tcpdf:
+    download:
+      type: file
+      url: "http://downloads.sourceforge.net/project/tcpdf/tcpdf_6_2_13.zip"
+  html_encode:
+    download:
+      type: file
+      url: "https://www.strictly-software.com/scripts/downloads/encoder.js"
+  jquery.blockUI:
+    download:
+      type: file
+      url: "https://raw.githubusercontent.com/malsup/blockui/2.70/jquery.blockUI.js"
+  flexslider:
+    download:
+      type: file
+      url: "https://github.com/woothemes/FlexSlider/archive/version/2.5.0.tar.gz"
 projects:
   addthis:
     type: module
@@ -174,7 +190,7 @@ projects:
   nodequeue:
     type: module
     subdir: contrib
-    version: "2.1"
+    version: "2.0"
   nodequeue_pager:
     type: module
     subdir: contrib
