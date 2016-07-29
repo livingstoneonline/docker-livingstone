@@ -26,10 +26,11 @@ libraries:
     download:
       type: file
       url: "http://downloads.sourceforge.net/project/tcpdf/tcpdf_6_2_13.zip"
-  html_encode:
+  html_encoder:
     download:
       type: file
       url: "https://www.strictly-software.com/scripts/downloads/encoder.js"
+      filename: "html_encoder.js"
   jquery.blockui:
     download:
       type: file
