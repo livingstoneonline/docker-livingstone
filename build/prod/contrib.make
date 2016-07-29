@@ -30,10 +30,11 @@ libraries:
     download:
       type: file
       url: "https://www.strictly-software.com/scripts/downloads/encoder.js"
-  jquery.blockUI:
+  jquery.blockui:
     download:
       type: file
       url: "https://raw.githubusercontent.com/malsup/blockui/2.70/jquery.blockUI.js"
+      filename: "jquery.blockui.js"
   flexslider:
     download:
       type: file
