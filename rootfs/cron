@@ -5,7 +5,9 @@ with-contenv
 multisubstitute
 {
   import -i DRUPAL_ROOT
+  import -D "no" ENABLE_CRON
 }
+if { s6-test ${ENABLE_CRON} = "yes" }
 if -n { pidof php }
    foreground
    {
