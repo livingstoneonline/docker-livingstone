@@ -1,0 +1,27 @@
+#!/usr/bin/execlineb -P
+# -*- mode: sh -*-
+# vi: set ft=sh :
+with-contenv
+multisubstitute
+{
+  import -i DRUPAL_ROOT
+}
+if -n { pidof php }
+   foreground
+   {
+      cd ${DRUPAL_ROOT}
+      s6-setuidgid www-data
+      /usr/local/bin/drush -u 1 livingstone_import_objects
+   }
+   foreground
+   {
+      cd ${DRUPAL_ROOT}
+      s6-setuidgid www-data
+      /usr/local/bin/drush -u 1 livingstone_import_nodes
+   }
+   foreground
+   {
+      cd ${DRUPAL_ROOT}
+      s6-setuidgid www-data
+      /usr/local/bin/drush -u 1 search-index
+   }
