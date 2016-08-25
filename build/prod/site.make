@@ -7,3 +7,4 @@ includes:
   - islandora.make
   - custom.make
   - theme.make
+  - dev.make
