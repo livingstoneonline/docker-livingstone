@@ -9,9 +9,9 @@ RUN apt-install \
       build-essential \
       python-dev \
       python-pip \
-      python-setuptools
-  && \
-  cleanup
+      python-setuptools \
+    && \
+    cleanup
 
 # Install csvkit.
 RUN pip install --no-cache-dir --upgrade pip && \
