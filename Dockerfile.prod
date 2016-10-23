@@ -14,8 +14,8 @@ RUN apt-install \
     cleanup
 
 # Install csvkit.
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir csvkit && \
+RUN pip install --upgrade pip && \
+    pip install csvkit && \
     cleanup
 
 COPY build/prod /build
