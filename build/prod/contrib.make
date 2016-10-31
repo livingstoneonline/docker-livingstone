@@ -77,6 +77,10 @@ projects:
     type: module
     subdir: contrib
     version: "3.2"
+  double_field:
+    type: module
+    subdir: contrib
+    version: "2.4"
   dragndrop_upload:
     type: module
     subdir: contrib
