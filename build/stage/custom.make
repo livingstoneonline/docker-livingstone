@@ -15,7 +15,7 @@ projects:
     download:
       type: git
       url: http://github.com/livingstoneonline/LEAP-XSLT.git
-      branch: gh-pages
+      branch: stage
       working-copy: true
   livingstone_online_development:
     subdir: custom
