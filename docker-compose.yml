@@ -1,0 +1,23 @@
+version: "2"
+services:
+  livingstone:
+    build: .
+    container_name: livingstone
+    image: livingstoneonline/livingstone
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - DRUPAL_SITE_ACCOUNT_PASSWORD=password
+      - DRUPAL_SITE_DB_PASSWORD=password
+      - FEDORA_ADMIN_PASSWORD=password
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+  mysql:
+    image: livingstoneonline/mysql
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "3306:3306"
+

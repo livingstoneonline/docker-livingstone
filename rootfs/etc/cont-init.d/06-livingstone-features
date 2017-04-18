@@ -1,0 +1,93 @@
+#!/usr/bin/execlineb -P
+# -*- mode: sh -*-
+# vi: set ft=sh:
+with-contenv
+multisubstitute
+{
+  import -i DRUPAL_ROOT
+  import -D "fedoraAdmin" FEDORA_ADMIN_USER
+  import -i FEDORA_ADMIN_PASSWORD
+}
+importas -i DRUPAL_ROOT DRUPAL_ROOT
+# Theme must be enabled before enable features that rely on regions existing.
+foreground {
+  echo "Installing Theme."
+}
+foreground {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y en bootstrap livingstone_theme
+}
+foreground {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y vset theme_default livingstone_theme
+}
+foreground {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y vset admin_theme seven
+}
+foreground {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y vset node_admin_theme 1
+}
+foreground {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y dis bartik
+}
+foreground {
+  echo "Enabling features."
+}
+foreground {
+  forx module {
+      "livingstone_base_feature"
+      "livingstone_image_styles_feature"
+      "livingstone_section_taxonomy_feature"
+      "livingstone_manuscript_feature"
+      "livingstone_partners_feature"
+      "livingstone_repository_info_feature"
+      "livingstone_section_page_feature"
+      "livingstone_slide_feature"
+      "livingstone_nodequeue_feature"
+      "livingstone_nodequeue_items_feature"
+      "livingstone_home_view_feature"
+      "livingstone_section_page_grid_view_feature"
+      "livingstone_timeline_view_feature"
+      "livingstone_geolocation_view_feature"
+      "livingstone_partners_view_feature"
+      "livingstone_repository_view_feature"
+      "livingstone_section_page_carousel_view_feature"
+      "livingstone_node_export"
+      "livingstone_user_feature"
+      "livingstone_manuscript_nodes_feature"
+      "livingstone_partner_nodes_feature"
+      "livingstone_repository_info_nodes_feature"
+      "livingstone_section_page_nodes_feature"
+      "livingstone_slide_nodes_feature"
+      "livingstone_menu_feature"
+      "livingstone_block_feature"
+      "livingstone_settings_feature"
+  }
+  importas -u module module
+  foreground { echo "Enabling ${module}." }
+  foreground {
+    cd ${DRUPAL_ROOT} s6-setuidgid apache
+    drush -u 1 -y en ${module}
+  } echo "Enabled ${module}."
+}
+# Not sure why this is required but it is.
+foreground {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y features-revert livingstone_nodequeue_items_feature
+}
+foreground {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y vset fedora_admin_user ${FEDORA_ADMIN_USER}
+}
+foreground {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y vset fedora_admin_password ${FEDORA_ADMIN_PASSWORD}
+}
+foreground {
+  chown -R apache:apache ${DRUPAL_ROOT}
+}
+cd ${DRUPAL_ROOT} s6-setuidgid apache
+drush cc all

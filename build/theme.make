@@ -1,13 +1,10 @@
 # -*- mode: yaml -*-
 # vi: set ft=yaml :
 projects:
-  nexus:
-    type: theme
-    version: 1.3
-  lo:
+  livingstone_online_theme:
     type: theme
     download:
       type: git
       url: http://github.com/livingstoneonline/livingstone_online_theme.git
-      branch: dev
+      branch: test
       working-copy: true

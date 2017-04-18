@@ -7,7 +7,7 @@ projects:
     download:
       type: git
       url: http://github.com/livingstoneonline/livingstone_online_module.git
-      branch: stage
+      branch: test
       working-copy: true
   LEAP_XSLT:
     subdir: custom
@@ -15,7 +15,7 @@ projects:
     download:
       type: git
       url: http://github.com/livingstoneonline/LEAP-XSLT.git
-      branch: stage
+      branch: dev
       working-copy: true
   livingstone_online_development:
     subdir: custom
