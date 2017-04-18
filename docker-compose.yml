@@ -3,7 +3,7 @@ services:
   livingstone:
     build: .
     container_name: livingstone
-    image: livingstoneonline/livingstone
+    image: livingstoneonline/livingstone:dev
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - DRUPAL_SITE_ACCOUNT_PASSWORD=password
