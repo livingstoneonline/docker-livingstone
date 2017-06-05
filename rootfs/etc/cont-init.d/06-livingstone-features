@@ -89,5 +89,10 @@ foreground {
 foreground {
   chown -R apache:apache ${DRUPAL_ROOT}
 }
+# DSID's can be long!
+foreground {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y sql-query "ALTER TABLE islandora_authtokens MODIFY COLUMN dsid VARCHAR(64);"
+}
 cd ${DRUPAL_ROOT} s6-setuidgid apache
 drush cc all
