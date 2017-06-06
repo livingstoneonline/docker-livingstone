@@ -57,6 +57,7 @@ foreground {
       "livingstone_section_page_carousel_view_feature"
       "livingstone_node_export"
       "livingstone_user_feature"
+      "livingstone_settings_feature"
       "livingstone_manuscript_nodes_feature"
       "livingstone_partner_nodes_feature"
       "livingstone_repository_info_nodes_feature"
@@ -64,7 +65,6 @@ foreground {
       "livingstone_slide_nodes_feature"
       "livingstone_menu_feature"
       "livingstone_block_feature"
-      "livingstone_settings_feature"
   }
   importas -u module module
   foreground { echo "Enabling ${module}." }
