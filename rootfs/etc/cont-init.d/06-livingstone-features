@@ -41,6 +41,7 @@ foreground {
 foreground {
   echo "Enabling features."
 }
+# Setup prior to content.
 foreground {
   forx module {
       "livingstone_base_feature"
@@ -61,8 +62,24 @@ foreground {
       "livingstone_repository_view_feature"
       "livingstone_section_page_carousel_view_feature"
       "livingstone_node_export"
-      "livingstone_user_feature"
       "livingstone_settings_feature"
+  }
+  importas -u module module
+  foreground { echo "Enabling ${module}." }
+  foreground {
+    cd ${DRUPAL_ROOT} s6-setuidgid apache
+    drush -u 1 -y en ${module}
+  } echo "Enabled ${module}."
+}
+# Not sure why this is required but it is.
+foreground {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y features-revert livingstone_settings_feature
+}
+# Setup content.
+foreground {
+  forx module {
+      "livingstone_user_feature"
       "livingstone_manuscript_nodes_feature"
       "livingstone_partner_nodes_feature"
       "livingstone_repository_info_nodes_feature"
@@ -79,28 +96,65 @@ foreground {
   } echo "Enabled ${module}."
 }
 # Not sure why this is required but it is.
-foreground {
+background {
   cd ${DRUPAL_ROOT} s6-setuidgid apache
   drush -u 1 -y features-revert livingstone_nodequeue_items_feature
 }
-foreground {
+# Index any un-index content
+background {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y  solr-index
+}
+# Deleted existing url-aliase.
+background {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y  php-eval "db_delete('url_alias')->execute();"
+}
+# Regenerate url-aliases.
+background {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y  php-eval "$nids = db_select('node', 'n')->fields('n', array('nid'))->condition('n.type', 'section_page')->execute()->fetchCol(); pathauto_node_update_alias_multiple($nids, 'bulkupdate');"
+}
+# Override specific aliases.
+background {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y  php-eval "$nodes = entity_uuid_load('node', array('6359d32f-8c12-4096-a78f-8cff0fc04ec8')); $node = reset($nodes); $path = array('source' => \"node/{$node->nid}\", 'alias' => 'in-his-own-words/catalogue'); path_save($path);"
+}
+background {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y  php-eval "$nodes = entity_uuid_load('node', array('f08e9f08-303d-448e-8c8a-d09c5dfba96e')); $node = reset($nodes); $path = array('source' => \"node/{$node->nid}\", 'alias' => 'in-his-own-words/addressee'); path_save($path);"
+}
+background {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y  php-eval "$nodes = entity_uuid_load('node', array('a196eb07-12c3-4133-b6e8-5a46fc2d9256')); $node = reset($nodes); $path = array('source' => \"node/{$node->nid}\", 'alias' => 'in-his-own-words/repository'); path_save($path);"
+}
+background {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y  php-eval "$nodes = entity_uuid_load('node', array('30c2c5e6-789e-4e36-8de8-e9d0102b55eb')); $node = reset($nodes); $path = array('source' => \"node/{$node->nid}\", 'alias' => 'in-his-own-words/timeline'); path_save($path);"
+}
+background {
+  cd ${DRUPAL_ROOT} s6-setuidgid apache
+  drush -u 1 -y  php-eval "$nodes = entity_uuid_load('node', array('c301ad6d-8a42-4467-854c-5ba54a7f63ad')); $node = reset($nodes); $path = array('source' => \"node/{$node->nid}\", 'alias' => 'in-his-own-words/location'); path_save($path);"
+}
+# Setup fedora access.
+background {
   cd ${DRUPAL_ROOT} s6-setuidgid apache
   drush -u 1 -y vset fedora_admin_user ${FEDORA_ADMIN_USER}
 }
-foreground {
+background {
   cd ${DRUPAL_ROOT} s6-setuidgid apache
   drush -u 1 -y vset fedora_admin_password ${FEDORA_ADMIN_PASSWORD}
 }
-foreground {
+background {
   chown -R apache:apache ${DRUPAL_ROOT}
 }
 # DSID's can be long!
-foreground {
+background {
   cd ${DRUPAL_ROOT} s6-setuidgid apache
   drush -u 1 -y sql-query "ALTER TABLE islandora_authtokens MODIFY COLUMN dsid VARCHAR(64);"
 }
 # Import redirect table since it's not supported by features.
-foreground {
+background {
   ifelse { s6-test -e /assets/redirect.sql } {
     foreground {
       redirfd -r 0 /assets/redirect.sql
