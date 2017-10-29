@@ -102,11 +102,6 @@ background {
   cd ${DRUPAL_ROOT} s6-setuidgid apache
   drush -u 1 -y features-revert livingstone_nodequeue_items_feature
 }
-# Index any un-index content
-background {
-  cd ${DRUPAL_ROOT} s6-setuidgid apache
-  drush -u 1 -y  solr-index
-}
 # Deleted existing url-aliase.
 background {
   cd ${DRUPAL_ROOT} s6-setuidgid apache
