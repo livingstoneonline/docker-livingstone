@@ -12,8 +12,10 @@ multisubstitute
   import -i MYSQL_ROOT_USER
   import -i MYSQL_ROOT_PASSWORD
   import -i DRUPAL_SITE_DB_NAME
+  import -i DRUPAL_SITE_FEATURES_ENABLE
 }
 importas -i DRUPAL_ROOT DRUPAL_ROOT
+if -t { s6-test ${DRUPAL_SITE_FEATURES_ENABLE} = "yes" }
 # Theme must be enabled before enable features that rely on regions existing.
 foreground {
   echo "Installing Theme."
