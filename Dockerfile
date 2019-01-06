@@ -4,6 +4,9 @@ MAINTAINER Nigel Banks <nigel.g.banks@gmail.com>
 LABEL "License"="GPLv3" \
       "Version"="0.0.1"
 
+RUN apk-install parallel && \
+    cleanup
+
 COPY build /build
 
 RUN cd ${DRUPAL_ROOT} && drush make -y --no-core --no-cache /build/site.make && \
