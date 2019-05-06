@@ -15,6 +15,13 @@ multisubstitute
   import -i DRUPAL_SITE_FEATURES_ENABLE
 }
 importas -i DRUPAL_ROOT DRUPAL_ROOT
+# Remove any explicit server overrides and add appropriate values.
+foreground {
+  perl -p -i -e "s/^\\$_SERVER.*\\n//gm" ${DRUPAL_ROOT}/sites/default/settings.php
+}
+foreground {
+  redirfd -a 1 ${DRUPAL_ROOT}/sites/default/settings.php echo "$_SERVER['HTTPS'] = 'on';\n$_SERVER['SERVER_PORT'] = 443;"
+}
 if -t { s6-test ${DRUPAL_SITE_FEATURES_ENABLE} = "yes" }
 # Theme must be enabled before enable features that rely on regions existing.
 foreground {
@@ -149,13 +156,6 @@ background {
 background {
   cd ${DRUPAL_ROOT} s6-setuidgid apache
   drush -u 1 -y sql-query "ALTER TABLE islandora_authtokens MODIFY COLUMN dsid VARCHAR(64);"
-}
-# Remove any explicit server overrides and add appropriate values.
-foreground {
-  perl -p -i -e "s/^\\$_SERVER.*\\n//gm" sites/default/settings.php
-}
-foreground {
-  redirfd -a 1 sites/default/settings.php echo "$_SERVER['HTTPS'] = 'on';\n$_SERVER['SERVER_PORT'] = 443;"
 }
 # Import redirect table since it's not supported by features.
 background {
