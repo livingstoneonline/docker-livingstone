@@ -150,6 +150,13 @@ background {
   cd ${DRUPAL_ROOT} s6-setuidgid apache
   drush -u 1 -y sql-query "ALTER TABLE islandora_authtokens MODIFY COLUMN dsid VARCHAR(64);"
 }
+# Remove any explicit server overrides and add appropriate values.
+foreground {
+  perl -p -i -e "s/^\\$_SERVER.*\\n//gm" sites/default/settings.php
+}
+foreground {
+  redirfd -a 1 sites/default/settings.php echo "$_SERVER['HTTPS'] = 'on';\n$_SERVER['SERVER_PORT'] = 443;"
+}
 # Import redirect table since it's not supported by features.
 background {
   ifelse { s6-test -e /assets/redirect.sql } {
