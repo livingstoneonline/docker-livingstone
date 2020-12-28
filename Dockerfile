@@ -19,3 +19,6 @@ RUN if s6-test ${BUILD_ENVIRONMENT} = "dev"; then \
     fi
 
 COPY rootfs /
+
+# Remove insecure code.
+RUN rm -fr /var/www/localhost/htdocs/sites/all/libraries/plupload/examples
